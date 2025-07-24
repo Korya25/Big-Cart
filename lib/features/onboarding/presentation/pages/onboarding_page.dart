@@ -51,24 +51,28 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Center(child: OnboardingContent(data: data)),
+                child: SafeArea(
+                  child: Center(child: OnboardingContent(data: data)),
+                ),
               );
             },
           ),
           Positioned(
-            bottom: 30.h,
+            bottom: 25.h,
             left: 0,
             right: 0,
-            child: Column(
-              spacing: 40.h,
-              children: [
-                OnboardingIndicator(controller: _pageController),
-                OnboardingLinearButton(
-                  isLastPage:
-                      currentPage == OnboardingData.onboardingData.length - 1,
-                  onPressed: _onNext,
-                ),
-              ],
+            child: SafeArea(
+              child: Column(
+                spacing: 30.h,
+                children: [
+                  OnboardingIndicator(controller: _pageController),
+                  OnboardingLinearButton(
+                    isLastPage:
+                        currentPage == OnboardingData.onboardingData.length - 1,
+                    onPressed: _onNext,
+                  ),
+                ],
+              ),
             ),
           ),
         ],

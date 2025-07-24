@@ -19,7 +19,7 @@ class OnboardingIndicator extends StatelessWidget {
         dotWidth: 10.w,
         spacing: 6.w,
         activeDotColor: AppColors.primaryDark,
-        dotColor: AppColors.primaryLight,
+        dotColor: Color(0xffDCDCDC),
       ),
     );
   }

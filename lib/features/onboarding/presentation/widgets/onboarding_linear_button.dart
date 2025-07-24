@@ -19,8 +19,8 @@ class OnboardingLinearButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 55.h,
-        width: 300.w,
+        height: 60.h,
+        width: 0.8.sw,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4.r),
           gradient: LinearGradient(
