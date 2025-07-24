@@ -1,4 +1,5 @@
 import 'package:big_cart/core/resources/routes/app_transtions.dart';
+import 'package:big_cart/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'app_routes.dart';
@@ -11,7 +12,7 @@ class AppRouter {
         path: AppRoutes.onboarding,
         name: AppRoutes.onboarding,
         pageBuilder: (context, state) =>
-            AppTransitions.fade(child: const Scaffold()),
+            AppTransitions.fade(child: const OnboardingPage()),
       ),
       GoRoute(
         path: AppRoutes.login,
