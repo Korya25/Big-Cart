@@ -1,9 +1,12 @@
+import 'package:big_cart/core/resources/routes/app_routes.dart';
 import 'package:big_cart/features/onboarding/data/onboarding_data.dart';
 import 'package:big_cart/features/onboarding/presentation/widgets/onboarding_content.dart';
 import 'package:big_cart/features/onboarding/presentation/widgets/onboarding_indicator.dart';
 import 'package:big_cart/features/onboarding/presentation/widgets/onboarding_linear_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -19,11 +22,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
   void _onNext() {
     final isLastPage = currentPage == OnboardingData.onboardingData.length - 1;
     if (isLastPage) {
-      // TODO: Navigate to Home/Login
+      context.goNamed(AppRoutes.login);
+      var box = Hive.box('myBox');
+      box.put('seeOnBoreading', true);
     } else {
       _pageController.nextPage(
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOutCubic,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
       );
     }
   }
@@ -38,23 +43,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
             itemCount: OnboardingData.onboardingData.length,
             onPageChanged: (index) => setState(() => currentPage = index),
             itemBuilder: (_, index) {
-              return AnimatedBuilder(
-                animation: _pageController,
-                builder: (context, child) {
-                  double value = 1.0;
-                  if (_pageController.position.haveDimensions) {
-                    value = (_pageController.page ?? 0) - index;
-                    value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
-                  }
-
-                  return Transform.scale(
-                    scale: value,
-                    child: Opacity(
-                      opacity: value,
-                      child: _OnboardingPageItem(index: index),
-                    ),
-                  );
-                },
+              final data = OnboardingData.onboardingData[index];
+              return Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(data.backgroundImage),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Center(child: OnboardingContent(data: data)),
               );
             },
           ),
@@ -63,9 +60,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
             left: 0,
             right: 0,
             child: Column(
+              spacing: 40.h,
               children: [
                 OnboardingIndicator(controller: _pageController),
-                SizedBox(height: 20.h),
                 OnboardingLinearButton(
                   isLastPage:
                       currentPage == OnboardingData.onboardingData.length - 1,
@@ -75,27 +72,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _OnboardingPageItem extends StatelessWidget {
-  final int index;
-  const _OnboardingPageItem({required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    final data = OnboardingData.onboardingData[index];
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(data.backgroundImage),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: SafeArea(
-        child: Center(child: OnboardingContent(data: data)),
       ),
     );
   }

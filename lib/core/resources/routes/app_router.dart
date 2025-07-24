@@ -2,11 +2,21 @@ import 'package:big_cart/core/resources/routes/app_transtions.dart';
 import 'package:big_cart/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 import 'app_routes.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: AppRoutes.onboarding,
+    redirect: (context, state) {
+      final box = Hive.box('myBox');
+      final hasSeenOnboarding = box.get('seeOnBoreading', defaultValue: false);
+
+      if (hasSeenOnboarding && state.matchedLocation == AppRoutes.onboarding) {
+        return AppRoutes.login;
+      }
+      return null;
+    },
     routes: [
       GoRoute(
         path: AppRoutes.onboarding,
