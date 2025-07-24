@@ -2,12 +2,12 @@ class OnboardingModel {
   final String backgroundImage;
   final String title;
   final String subTitle;
-  final String? logoSvg;
+  final String? logoPng;
 
   OnboardingModel({
     required this.backgroundImage,
     required this.title,
     required this.subTitle,
-    this.logoSvg,
+    this.logoPng,
   });
 }

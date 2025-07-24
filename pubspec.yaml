@@ -43,6 +43,7 @@ dependencies:
   google_fonts: ^6.2.1
   shimmer: ^3.0.0
   cached_network_image: ^3.4.1
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -69,7 +70,7 @@ flutter:
   assets:
     - assets/onboarding/
     - assets/Categories_svgs/
-    - assets/app_icon_svgs/
+    - assets/app_icon_png/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

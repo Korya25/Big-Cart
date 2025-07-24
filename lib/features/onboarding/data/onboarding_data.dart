@@ -11,7 +11,7 @@ class OnboardingData {
       backgroundImage: AppAssets.onboardingPngs[index],
       title: AppStrings.onboardingTitles[index],
       subTitle: AppStrings.onboardingSubtitles[index],
-      logoSvg: index == 0 ? AppAssets.appLogoSvg : null,
+      logoPng: index == 0 ? AppAssets.appLogoPng : null,
     ),
   );
 

@@ -1,6 +1,6 @@
 class AppAssets {
   // App Logo
-  static const String appLogoSvg = 'assets/app_icon_svgs/bigCart 1.svg';
+  static const String appLogoPng = 'assets/app_icon_png/bigCart 1.png';
 
   // Category SVGs
   static const String beveragesSvg = 'assets/Categories_svgs/beverage 1.svg';

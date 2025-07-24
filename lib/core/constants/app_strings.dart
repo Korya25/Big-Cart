@@ -2,16 +2,16 @@ class AppStrings {
   // Onboarding
   static const List<String> onboardingTitles = [
     'Welcome to',
-    'Buy Quality Dairy Products',
-    'Buy Premium Quality Fruits',
-    'Get Discounts On All Products',
+    'Buy Quality\nDairy Products',
+    'Buy Premium\nQuality Fruits',
+    'Get Discounts\nOn All Products',
   ];
 
   static const List<String> onboardingSubtitles = [
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
-    'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy',
+    'Lorem ipsum dolor sit amet, consetetur\nsadipscing elitr, sed diam nonumy',
+    'Lorem ipsum dolor sit amet, consetetur\nsadipscing elitr, sed diam nonumy',
+    'Lorem ipsum dolor sit amet, consetetur\nsadipscing elitr, sed diam nonumy',
+    'Lorem ipsum dolor sit amet, consetetur\nsadipscing elitr, sed diam nonumy',
   ];
 
   // Auth
