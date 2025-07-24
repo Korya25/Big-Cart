@@ -1,4 +1,4 @@
-import 'package:big_cart/core/resources/app_router.dart';
+import 'package:big_cart/core/resources/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
