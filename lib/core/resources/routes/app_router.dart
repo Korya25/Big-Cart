@@ -1,4 +1,6 @@
 import 'package:big_cart/core/resources/routes/app_transtions.dart';
+import 'package:big_cart/features/auth/presentation/pages/login_page.dart';
+import 'package:big_cart/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:big_cart/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -28,13 +30,13 @@ class AppRouter {
         path: AppRoutes.login,
         name: AppRoutes.login,
         pageBuilder: (context, state) =>
-            AppTransitions.slideFromRight(child: const Scaffold()),
+            AppTransitions.slideFromRight(child: const LoginPage()),
       ),
       GoRoute(
         path: AppRoutes.signUp,
         name: AppRoutes.signUp,
         pageBuilder: (context, state) =>
-            AppTransitions.slideFromRight(child: const Scaffold()),
+            AppTransitions.slideFromRight(child: const SignUpPage()),
       ),
       GoRoute(
         path: AppRoutes.home,

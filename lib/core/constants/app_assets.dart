@@ -17,4 +17,10 @@ class AppAssets {
     'assets/onboarding/onboarding_3.png',
     'assets/onboarding/onboarding_4.png',
   ];
+
+  // auth
+  static const String login =
+      'assets/auth/portrait-female-person-supermarket-holding-fruit-smiling 1.png';
+  static const String signUp =
+      'assets/auth/woman-with-shopping-list-standing-by-fridge-supermarket-checking-cart 1.png';
 }
