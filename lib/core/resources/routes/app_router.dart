@@ -1,20 +1,26 @@
+import 'package:big_cart/core/constants/hive_keys.dart';
+import 'package:big_cart/core/resources/routes/app_routes.dart';
+import 'package:big_cart/core/services/hive_service.dart';
 import 'package:big_cart/core/resources/routes/app_transtions.dart';
 import 'package:big_cart/features/auth/presentation/pages/login_page.dart';
 import 'package:big_cart/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:big_cart/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hive/hive.dart';
-import 'app_routes.dart';
 
 class AppRouter {
+  static final HiveService _hiveService = HiveService();
+
   static final GoRouter router = GoRouter(
     initialLocation: AppRoutes.onboarding,
-    redirect: (context, state) {
-      final box = Hive.box('myBox');
-      final hasSeenOnboarding = box.get('seeOnBoreading', defaultValue: false);
+    redirect: (context, state) async {
+      final hasSeenOnboarding = await _hiveService.read<bool>(
+        HiveKeys.mainBox,
+        HiveKeys.hasSeenOnboarding,
+      );
 
-      if (hasSeenOnboarding && state.matchedLocation == AppRoutes.onboarding) {
+      if ((hasSeenOnboarding ?? false) &&
+          state.matchedLocation == AppRoutes.onboarding) {
         return AppRoutes.login;
       }
       return null;

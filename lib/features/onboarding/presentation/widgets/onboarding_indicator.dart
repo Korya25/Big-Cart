@@ -1,4 +1,4 @@
-import 'package:big_cart/core/constants/app_colors.dart';
+import 'package:big_cart/core/resources/style/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

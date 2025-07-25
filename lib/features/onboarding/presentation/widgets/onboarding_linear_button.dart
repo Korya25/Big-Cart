@@ -1,6 +1,6 @@
-import 'package:big_cart/core/constants/app_colors.dart';
+import 'package:big_cart/core/resources/style/theme/app_colors.dart';
 import 'package:big_cart/core/constants/app_strings.dart';
-import 'package:big_cart/core/resources/app_text_styles.dart';
+import 'package:big_cart/core/utils/context_extions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,7 +30,11 @@ class OnboardingLinearButton extends StatelessWidget {
         child: Center(
           child: Text(
             isLastPage ? AppStrings.getStarted : AppStrings.next,
-            style: AppTextStyles.poppins15White800,
+            style: context.textStyle.copyWith(
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w800,
+              color: AppColors.textWhite,
+            ),
           ),
         ),
       ),

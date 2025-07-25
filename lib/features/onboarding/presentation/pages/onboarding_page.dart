@@ -1,4 +1,6 @@
+import 'package:big_cart/core/constants/hive_keys.dart';
 import 'package:big_cart/core/resources/routes/app_routes.dart';
+import 'package:big_cart/core/services/hive_service.dart';
 import 'package:big_cart/features/onboarding/data/onboarding_data.dart';
 import 'package:big_cart/features/onboarding/presentation/widgets/onboarding_content.dart';
 import 'package:big_cart/features/onboarding/presentation/widgets/onboarding_indicator.dart';
@@ -6,7 +8,6 @@ import 'package:big_cart/features/onboarding/presentation/widgets/onboarding_lin
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hive/hive.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -17,14 +18,19 @@ class OnboardingPage extends StatefulWidget {
 
 class _OnboardingPageState extends State<OnboardingPage> {
   final PageController _pageController = PageController();
+  final HiveService _hiveService = HiveService();
+
   int currentPage = 0;
 
-  void _onNext() {
+  void _onNext() async {
     final isLastPage = currentPage == OnboardingData.onboardingData.length - 1;
     if (isLastPage) {
       context.goNamed(AppRoutes.login);
-      var box = Hive.box('myBox');
-      box.put('seeOnBoreading', true);
+      await _hiveService.write(
+        HiveKeys.mainBox,
+        HiveKeys.hasSeenOnboarding,
+        true,
+      );
     } else {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),

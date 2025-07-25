@@ -1,4 +1,6 @@
-import 'package:big_cart/core/resources/app_text_styles.dart';
+import 'package:big_cart/core/presentation/widgets/text_app.dart';
+import 'package:big_cart/core/resources/style/theme/app_colors.dart';
+import 'package:big_cart/core/utils/context_extions.dart';
 import 'package:big_cart/features/onboarding/data/model/onboarding_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,16 +18,24 @@ class OnboardingContent extends StatelessWidget {
         Text(
           data.title,
           textAlign: TextAlign.center,
-          style: AppTextStyles.poppins30BlackBold,
+          style: context.textStyle.copyWith(
+            fontSize: 30.sp,
+            fontWeight: FontWeight.bold,
+            color: AppColors.textBlack,
+          ),
         ),
         if (data.logoPng != null) ...[Image.asset(data.logoPng!, height: 60.h)],
 
         if (data.logoPng == null) ...[SizedBox(height: 8.h)],
 
-        Text(
-          data.subTitle,
+        TextApp(
+          text: data.subTitle,
           textAlign: TextAlign.center,
-          style: AppTextStyles.poppins15Grey500,
+          style: context.textStyle.copyWith(
+            fontSize: 15.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textGrey,
+          ),
         ),
       ],
     );
