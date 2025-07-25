@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unused_import
 
 import 'package:big_cart/core/constants/hive_keys.dart';
 import 'package:big_cart/core/resources/routes/app_router.dart';
@@ -14,7 +14,9 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox(HiveKeys.mainBox);
 
-  runApp(DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
+  //runApp(DevicePreview(enabled: !kReleaseMode, builder: (context) => MyApp()));
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -28,9 +30,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp.router(
         theme: AppTheme.themeLight(),
-        useInheritedMediaQuery: true,
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
+        // useInheritedMediaQuery: true,
+        // locale: DevicePreview.locale(context),
+        //  builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
         routerConfig: AppRouter.router,
       ),
